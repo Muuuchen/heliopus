@@ -1,0 +1,1 @@
+/usr/bin/g++ CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o CMakeFiles/OverLap.dir/src/gemm.cu.o CMakeFiles/OverLap.dir/src/nvcc.cu.o CMakeFiles/OverLap.dir/cmake_device_link.o -o OverLap  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/usr/local/cuda/targets/x86_64-linux/lib/stubs" -L"/usr/local/cuda/targets/x86_64-linux/lib"
