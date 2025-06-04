@@ -3,7 +3,7 @@
 #include <cuda_bf16.h>
 #include <cuda_runtime.h>
 
-namespace utils
+namespace cuda_op
 {
 /*
 处理空参数的问题：
@@ -39,6 +39,6 @@ GCC）可能会在展开时残留逗号，导致编译错误。 此时可以用 
         }                                                                                          \
     } while (0)
 
-} // namespace utils
+} // namespace cuda_op
 
 #endif

@@ -1,6 +1,16 @@
 [
 {
   "directory": "/root/workspace/overlap/build",
+  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -I/root/workspace/overlap/include -g --generate-code=arch=compute_90,code=[compute_90,sm_90] --expt-relaxed-constexpr -std=c++17 -x cu -dc /root/workspace/overlap/src/test.cu -o CMakeFiles/OverLap.dir/src/test.cu.o",
+  "file": "/root/workspace/overlap/src/test.cu"
+},
+{
+  "directory": "/root/workspace/overlap/build",
+  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -I/root/workspace/overlap/include -g --generate-code=arch=compute_90,code=[compute_90,sm_90] --expt-relaxed-constexpr -std=c++17 -x cu -dc /root/workspace/overlap/src/rmsnorm.cu -o CMakeFiles/OverLap.dir/src/rmsnorm.cu.o",
+  "file": "/root/workspace/overlap/src/rmsnorm.cu"
+},
+{
+  "directory": "/root/workspace/overlap/build",
   "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -I/root/workspace/overlap/include -g --generate-code=arch=compute_90,code=[compute_90,sm_90] --expt-relaxed-constexpr -std=c++17 -x cu -dc /root/workspace/overlap/src/distributed_gemm.cu -o CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o",
   "file": "/root/workspace/overlap/src/distributed_gemm.cu"
 },
@@ -18,10 +28,5 @@
   "directory": "/root/workspace/overlap/build",
   "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -I/root/workspace/overlap/include -g --generate-code=arch=compute_90,code=[compute_90,sm_90] --expt-relaxed-constexpr -std=c++17 -x cu -dc /root/workspace/overlap/src/reduce.cu -o CMakeFiles/OverLap.dir/src/reduce.cu.o",
   "file": "/root/workspace/overlap/src/reduce.cu"
-},
-{
-  "directory": "/root/workspace/overlap/build",
-  "command": "/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler -I/root/workspace/overlap/include -g --generate-code=arch=compute_90,code=[compute_90,sm_90] --expt-relaxed-constexpr -std=c++17 -x cu -dc /root/workspace/overlap/src/test.cu -o CMakeFiles/OverLap.dir/src/test.cu.o",
-  "file": "/root/workspace/overlap/src/test.cu"
 }
 ]

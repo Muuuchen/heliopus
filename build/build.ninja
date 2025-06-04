@@ -49,6 +49,20 @@ cmake_ninja_workdir = /root/workspace/overlap/build/
 
 build cmake_object_order_depends_target_OverLap: phony || CMakeFiles/OverLap.dir
 
+build CMakeFiles/OverLap.dir/src/test.cu.o: CUDA_COMPILER__OverLap_Debug /root/workspace/overlap/src/test.cu || cmake_object_order_depends_target_OverLap
+  DEP_FILE = CMakeFiles/OverLap.dir/src/test.cu.o.d
+  FLAGS = -g --generate-code=arch=compute_90,code=[compute_90,sm_90] --expt-relaxed-constexpr -std=c++17
+  INCLUDES = -I/root/workspace/overlap/include
+  OBJECT_DIR = CMakeFiles/OverLap.dir
+  OBJECT_FILE_DIR = CMakeFiles/OverLap.dir/src
+
+build CMakeFiles/OverLap.dir/src/rmsnorm.cu.o: CUDA_COMPILER__OverLap_Debug /root/workspace/overlap/src/rmsnorm.cu || cmake_object_order_depends_target_OverLap
+  DEP_FILE = CMakeFiles/OverLap.dir/src/rmsnorm.cu.o.d
+  FLAGS = -g --generate-code=arch=compute_90,code=[compute_90,sm_90] --expt-relaxed-constexpr -std=c++17
+  INCLUDES = -I/root/workspace/overlap/include
+  OBJECT_DIR = CMakeFiles/OverLap.dir
+  OBJECT_FILE_DIR = CMakeFiles/OverLap.dir/src
+
 build CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o: CUDA_COMPILER__OverLap_Debug /root/workspace/overlap/src/distributed_gemm.cu || cmake_object_order_depends_target_OverLap
   DEP_FILE = CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o.d
   FLAGS = -g --generate-code=arch=compute_90,code=[compute_90,sm_90] --expt-relaxed-constexpr -std=c++17
@@ -77,13 +91,6 @@ build CMakeFiles/OverLap.dir/src/reduce.cu.o: CUDA_COMPILER__OverLap_Debug /root
   OBJECT_DIR = CMakeFiles/OverLap.dir
   OBJECT_FILE_DIR = CMakeFiles/OverLap.dir/src
 
-build CMakeFiles/OverLap.dir/src/test.cu.o: CUDA_COMPILER__OverLap_Debug /root/workspace/overlap/src/test.cu || cmake_object_order_depends_target_OverLap
-  DEP_FILE = CMakeFiles/OverLap.dir/src/test.cu.o.d
-  FLAGS = -g --generate-code=arch=compute_90,code=[compute_90,sm_90] --expt-relaxed-constexpr -std=c++17
-  INCLUDES = -I/root/workspace/overlap/include
-  OBJECT_DIR = CMakeFiles/OverLap.dir
-  OBJECT_FILE_DIR = CMakeFiles/OverLap.dir/src
-
 
 # =============================================================================
 # Device Link build statements for EXECUTABLE target OverLap
@@ -92,7 +99,7 @@ build CMakeFiles/OverLap.dir/src/test.cu.o: CUDA_COMPILER__OverLap_Debug /root/w
 #############################################
 # Link the executable CMakeFiles/OverLap.dir/cmake_device_link.o
 
-build CMakeFiles/OverLap.dir/cmake_device_link.o: CUDA_EXECUTABLE_DEVICE_LINKER__OverLap_Debug CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o CMakeFiles/OverLap.dir/src/gemm.cu.o CMakeFiles/OverLap.dir/src/pdl.cu.o CMakeFiles/OverLap.dir/src/reduce.cu.o CMakeFiles/OverLap.dir/src/test.cu.o
+build CMakeFiles/OverLap.dir/cmake_device_link.o: CUDA_EXECUTABLE_DEVICE_LINKER__OverLap_Debug CMakeFiles/OverLap.dir/src/test.cu.o CMakeFiles/OverLap.dir/src/rmsnorm.cu.o CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o CMakeFiles/OverLap.dir/src/gemm.cu.o CMakeFiles/OverLap.dir/src/pdl.cu.o CMakeFiles/OverLap.dir/src/reduce.cu.o
   LANGUAGE_COMPILE_FLAGS = -g --generate-code=arch=compute_90,code=[compute_90,sm_90]
   LINK_LIBRARIES = -lcudadevrt -lcudart_static -lrt -lpthread -ldl
   OBJECT_DIR = CMakeFiles/OverLap.dir
@@ -105,7 +112,7 @@ build CMakeFiles/OverLap.dir/cmake_device_link.o: CUDA_EXECUTABLE_DEVICE_LINKER_
 #############################################
 # Link the executable OverLap
 
-build OverLap: CUDA_EXECUTABLE_LINKER__OverLap_Debug CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o CMakeFiles/OverLap.dir/src/gemm.cu.o CMakeFiles/OverLap.dir/src/pdl.cu.o CMakeFiles/OverLap.dir/src/reduce.cu.o CMakeFiles/OverLap.dir/src/test.cu.o CMakeFiles/OverLap.dir/cmake_device_link.o
+build OverLap: CUDA_EXECUTABLE_LINKER__OverLap_Debug CMakeFiles/OverLap.dir/src/test.cu.o CMakeFiles/OverLap.dir/src/rmsnorm.cu.o CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o CMakeFiles/OverLap.dir/src/gemm.cu.o CMakeFiles/OverLap.dir/src/pdl.cu.o CMakeFiles/OverLap.dir/src/reduce.cu.o CMakeFiles/OverLap.dir/cmake_device_link.o
   FLAGS = -g --generate-code=arch=compute_90,code=[compute_90,sm_90]
   LINK_LIBRARIES = -lcudadevrt  -lcudart_static  -lrt  -lpthread  -ldl
   OBJECT_DIR = CMakeFiles/OverLap.dir

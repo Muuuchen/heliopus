@@ -3,6 +3,8 @@
 
 #include <cuda_fp16.h>
 #define FINAL_MASK 0xffffffff
+/*模板函数（如 warpReduceSum 和
+ * blockReduceSum）的声明和定义必须同时出现在头文件中，因为编译器需要在实例化时看到完整的函数体。*/
 namespace cuda_op
 {
 
@@ -49,5 +51,4 @@ template <typename T, int NUM> __inline__ __device__ T blockReduceSum(T* val)
 }
 
 } // namespace cuda_op
-
 #endif

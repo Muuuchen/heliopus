@@ -22,8 +22,17 @@ enable_language(CUDA)
 find_package(CUDA REQUIRED)
 
 # 添加可执行文件
-file(GLOB_RECURSE SOURCES "src/*.cpp" "src/*.cu")
-add_executable(${PROJECT_NAME} ${SOURCES})
+# file(GLOB_RECURSE SOURCES "src/*.cpp" "src/*.cu")
+# add_executable(${PROJECT_NAME} ${SOURCES})
+
+add_executable(${PROJECT_NAME}
+    src/test.cu
+    src/rmsnorm.cu       # 关键：显式添加内核定义文件
+    src/distributed_gemm.cu
+    src/gemm.cu
+    src/pdl.cu
+    src/reduce.cu
+)
 
 # 设置CUDA编译选项
 if(CMAKE_CUDA_COMPILER)
