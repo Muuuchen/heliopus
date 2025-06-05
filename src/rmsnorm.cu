@@ -59,8 +59,10 @@ __global__ void rmsnorm_twoPassAlgo_e8(float4* output, const float4* input, cons
         s_mean = rsqrtf(local_sums[0] / n + epsilon);
     }
     __syncthreads();
-    // 以上已经算完了RMS
-
+// 以上已经算完了RMS
+#if (defined(__CUDA_ARCH__) && (__CUDA_ARCH__ >= 900))
+    asm volatile("griddepcontrol.launch_dependents;");
+#endif
     for (int index = tid; index < n_8; index += block_dim_x)
     {
         const float4 local_val = input[index];
@@ -91,8 +93,5 @@ __global__ void rmsnorm_twoPassAlgo_e8(float4* output, const float4* input, cons
         h4->y = half(static_cast<float>(l4->y) * s_mean * static_cast<float>(w4->y));
         output[index] = tmp;
     }
-#if (defined(__CUDA_ARCH__) && (__CUDA_ARCH__ >= 900))
-    asm volatile("griddepcontrol.launch_dependents;");
-#endif
 }
 } // namespace cuda_op

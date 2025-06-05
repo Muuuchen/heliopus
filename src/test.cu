@@ -1,3 +1,4 @@
+#include "dummy.cuh"
 #include "launch_utils.cuh"
 #include "rmsnorm.cuh"
 #include "vecadd.cuh"
@@ -15,12 +16,6 @@
             std::cerr << "CUDA Error at " << __FILE__ << ":" << __LINE__ << ": "                   \
                       << cudaGetErrorString(error) << std::endl;                                   \
             abort();                                                                               \
-        }                                                                                          \
-        else                                                                                       \
-        {                                                                                          \
-            std::cerr << "NO error" << __FILE__ << ":" << __LINE__ << ": "                         \
-                      << cudaGetErrorString(error) << std::endl;                                   \
-            ;                                                                                      \
         }                                                                                          \
     } while (0)
 
@@ -50,12 +45,12 @@ int main()
     CHECK_CUDA_ERROR(cudaMemcpy(d_input, input, m * n * sizeof(half), cudaMemcpyHostToDevice));
     CHECK_CUDA_ERROR(cudaMemcpy(d_output, output, m * n * sizeof(half), cudaMemcpyHostToDevice));
     CHECK_CUDA_ERROR(cudaMemcpy(d_weight, weight, m * n * sizeof(half), cudaMemcpyHostToDevice));
-
+    LAUNCH_KERNEL_WITH_PDL(cuda_op::dummy_kernel, 256, 256, 0, stream, 1);
+    LAUNCH_KERNEL_WITH_PDL(cuda_op::dummy_kernel, 256, 256, 0, stream, 1);
     if (n % 8 == 0)
     {
         dim3 grid(m);
         dim3 block(std::min<int>(1024, (n / 8 + 31) / 32 * 32));
-        std::cout << "compute:/n";
         LAUNCH_KERNEL_WITH_PDL(cuda_op::rmsnorm_twoPassAlgo_e8, grid, block, shmem_size, stream,
                                (float4*)d_output, (const float4*)(d_input),
                                (const float4*)(d_weight), m, n, 1e-5);
@@ -69,7 +64,6 @@ int main()
                                (const float4*)(d_weight), m, n, 1e-5);
         CHECK_CUDA_ERROR(cudaGetLastError()); // 检查内核启动错误
         cudaDeviceSynchronize();
-        std::cout << "done\n";
         cudaMemcpy(output, d_output, m * n * sizeof(half), cudaMemcpyDeviceToHost);
         for (int i = 0; i < 10; i++)
         {
