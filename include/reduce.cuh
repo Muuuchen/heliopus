@@ -23,12 +23,15 @@ template <typename T, int NUM> __inline__ __device__ T warpReduceSum(T* val)
 }
 
 // 这里主要是一个warp 规约不完所以需要在block 内进行 取决于我的block dim 的大小是不是大于32
+
 template <typename T, int NUM> __inline__ __device__ T blockReduceSum(T* val)
 {
     __shared__ T shared[NUM][33];
-    int lane = threadIdx.x & 31; // 0x11111 相当于对32 取余
-    int wid = threadIdx.x >> 5;  // 相当于整除32
+    int lane = threadIdx.x & 0x1f;
+    int wid = threadIdx.x >> 5;
+
     warpReduceSum<T, NUM>(val);
+
     if (lane == 0)
     {
 #pragma unroll
@@ -36,17 +39,17 @@ template <typename T, int NUM> __inline__ __device__ T blockReduceSum(T* val)
         {
             shared[i][wid] = val[i];
         }
-
-        __syncthreads();
-        // 这里接下里啊要对warp之后的值再reduce 需要mask
-        bool is_mask = (threadIdx.x < (blockDim.x / 32));
-#pragma unroll
-        for (int i = 0; i < NUM; i++)
-        {
-            val[i] = is_mask ? shared[i][lane] : (T)(0.0f);
-        }
-        warpReduceSum<T, NUM>(val);
     }
+
+    __syncthreads();
+
+    bool is_mask = threadIdx.x < (blockDim.x / 32.f);
+#pragma unroll
+    for (int i = 0; i < NUM; i++)
+    {
+        val[i] = is_mask ? shared[i][lane] : (T)(0.0f);
+    }
+    warpReduceSum<T, NUM>(val);
     return (T)0.0f;
 }
 

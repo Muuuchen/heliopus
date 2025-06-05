@@ -10,7 +10,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/root/workspace/overlap/src/distributed_gemm.cu" "CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o" "gcc" "CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o.d"
   "/root/workspace/overlap/src/gemm.cu" "CMakeFiles/OverLap.dir/src/gemm.cu.o" "gcc" "CMakeFiles/OverLap.dir/src/gemm.cu.o.d"
-  "/root/workspace/overlap/src/nvcc.cu" "CMakeFiles/OverLap.dir/src/nvcc.cu.o" "gcc" "CMakeFiles/OverLap.dir/src/nvcc.cu.o.d"
+  "/root/workspace/overlap/src/pdl.cu" "CMakeFiles/OverLap.dir/src/pdl.cu.o" "gcc" "CMakeFiles/OverLap.dir/src/pdl.cu.o.d"
+  "/root/workspace/overlap/src/rmsnorm.cu" "CMakeFiles/OverLap.dir/src/rmsnorm.cu.o" "gcc" "CMakeFiles/OverLap.dir/src/rmsnorm.cu.o.d"
+  "/root/workspace/overlap/src/test.cu" "CMakeFiles/OverLap.dir/src/test.cu.o" "gcc" "CMakeFiles/OverLap.dir/src/test.cu.o.d"
   )
 
 # Targets to which this target links.

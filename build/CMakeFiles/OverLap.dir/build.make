@@ -69,10 +69,38 @@ include CMakeFiles/OverLap.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/OverLap.dir/flags.make
 
+CMakeFiles/OverLap.dir/src/test.cu.o: CMakeFiles/OverLap.dir/flags.make
+CMakeFiles/OverLap.dir/src/test.cu.o: ../src/test.cu
+CMakeFiles/OverLap.dir/src/test.cu.o: CMakeFiles/OverLap.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/workspace/overlap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/OverLap.dir/src/test.cu.o"
+	/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/OverLap.dir/src/test.cu.o -MF CMakeFiles/OverLap.dir/src/test.cu.o.d -x cu -dc /root/workspace/overlap/src/test.cu -o CMakeFiles/OverLap.dir/src/test.cu.o
+
+CMakeFiles/OverLap.dir/src/test.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/OverLap.dir/src/test.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/OverLap.dir/src/test.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/OverLap.dir/src/test.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/OverLap.dir/src/rmsnorm.cu.o: CMakeFiles/OverLap.dir/flags.make
+CMakeFiles/OverLap.dir/src/rmsnorm.cu.o: ../src/rmsnorm.cu
+CMakeFiles/OverLap.dir/src/rmsnorm.cu.o: CMakeFiles/OverLap.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/workspace/overlap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/OverLap.dir/src/rmsnorm.cu.o"
+	/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/OverLap.dir/src/rmsnorm.cu.o -MF CMakeFiles/OverLap.dir/src/rmsnorm.cu.o.d -x cu -dc /root/workspace/overlap/src/rmsnorm.cu -o CMakeFiles/OverLap.dir/src/rmsnorm.cu.o
+
+CMakeFiles/OverLap.dir/src/rmsnorm.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/OverLap.dir/src/rmsnorm.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/OverLap.dir/src/rmsnorm.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/OverLap.dir/src/rmsnorm.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o: CMakeFiles/OverLap.dir/flags.make
 CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o: ../src/distributed_gemm.cu
 CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o: CMakeFiles/OverLap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/workspace/overlap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/workspace/overlap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CUDA object CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o"
 	/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o -MF CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o.d -x cu -dc /root/workspace/overlap/src/distributed_gemm.cu -o CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o
 
 CMakeFiles/OverLap.dir/src/distributed_gemm.cu.i: cmake_force
@@ -86,7 +114,7 @@ CMakeFiles/OverLap.dir/src/distributed_gemm.cu.s: cmake_force
 CMakeFiles/OverLap.dir/src/gemm.cu.o: CMakeFiles/OverLap.dir/flags.make
 CMakeFiles/OverLap.dir/src/gemm.cu.o: ../src/gemm.cu
 CMakeFiles/OverLap.dir/src/gemm.cu.o: CMakeFiles/OverLap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/workspace/overlap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/OverLap.dir/src/gemm.cu.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/workspace/overlap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CUDA object CMakeFiles/OverLap.dir/src/gemm.cu.o"
 	/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/OverLap.dir/src/gemm.cu.o -MF CMakeFiles/OverLap.dir/src/gemm.cu.o.d -x cu -dc /root/workspace/overlap/src/gemm.cu -o CMakeFiles/OverLap.dir/src/gemm.cu.o
 
 CMakeFiles/OverLap.dir/src/gemm.cu.i: cmake_force
@@ -97,35 +125,39 @@ CMakeFiles/OverLap.dir/src/gemm.cu.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/OverLap.dir/src/gemm.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
-CMakeFiles/OverLap.dir/src/nvcc.cu.o: CMakeFiles/OverLap.dir/flags.make
-CMakeFiles/OverLap.dir/src/nvcc.cu.o: ../src/nvcc.cu
-CMakeFiles/OverLap.dir/src/nvcc.cu.o: CMakeFiles/OverLap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/workspace/overlap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CUDA object CMakeFiles/OverLap.dir/src/nvcc.cu.o"
-	/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/OverLap.dir/src/nvcc.cu.o -MF CMakeFiles/OverLap.dir/src/nvcc.cu.o.d -x cu -dc /root/workspace/overlap/src/nvcc.cu -o CMakeFiles/OverLap.dir/src/nvcc.cu.o
+CMakeFiles/OverLap.dir/src/pdl.cu.o: CMakeFiles/OverLap.dir/flags.make
+CMakeFiles/OverLap.dir/src/pdl.cu.o: ../src/pdl.cu
+CMakeFiles/OverLap.dir/src/pdl.cu.o: CMakeFiles/OverLap.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/workspace/overlap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CUDA object CMakeFiles/OverLap.dir/src/pdl.cu.o"
+	/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/OverLap.dir/src/pdl.cu.o -MF CMakeFiles/OverLap.dir/src/pdl.cu.o.d -x cu -dc /root/workspace/overlap/src/pdl.cu -o CMakeFiles/OverLap.dir/src/pdl.cu.o
 
-CMakeFiles/OverLap.dir/src/nvcc.cu.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/OverLap.dir/src/nvcc.cu.i"
+CMakeFiles/OverLap.dir/src/pdl.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/OverLap.dir/src/pdl.cu.i"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
 
-CMakeFiles/OverLap.dir/src/nvcc.cu.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/OverLap.dir/src/nvcc.cu.s"
+CMakeFiles/OverLap.dir/src/pdl.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/OverLap.dir/src/pdl.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
 # Object files for target OverLap
 OverLap_OBJECTS = \
+"CMakeFiles/OverLap.dir/src/test.cu.o" \
+"CMakeFiles/OverLap.dir/src/rmsnorm.cu.o" \
 "CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o" \
 "CMakeFiles/OverLap.dir/src/gemm.cu.o" \
-"CMakeFiles/OverLap.dir/src/nvcc.cu.o"
+"CMakeFiles/OverLap.dir/src/pdl.cu.o"
 
 # External object files for target OverLap
 OverLap_EXTERNAL_OBJECTS =
 
+CMakeFiles/OverLap.dir/cmake_device_link.o: CMakeFiles/OverLap.dir/src/test.cu.o
+CMakeFiles/OverLap.dir/cmake_device_link.o: CMakeFiles/OverLap.dir/src/rmsnorm.cu.o
 CMakeFiles/OverLap.dir/cmake_device_link.o: CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o
 CMakeFiles/OverLap.dir/cmake_device_link.o: CMakeFiles/OverLap.dir/src/gemm.cu.o
-CMakeFiles/OverLap.dir/cmake_device_link.o: CMakeFiles/OverLap.dir/src/nvcc.cu.o
+CMakeFiles/OverLap.dir/cmake_device_link.o: CMakeFiles/OverLap.dir/src/pdl.cu.o
 CMakeFiles/OverLap.dir/cmake_device_link.o: CMakeFiles/OverLap.dir/build.make
 CMakeFiles/OverLap.dir/cmake_device_link.o: CMakeFiles/OverLap.dir/dlink.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/workspace/overlap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CUDA device code CMakeFiles/OverLap.dir/cmake_device_link.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/workspace/overlap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CUDA device code CMakeFiles/OverLap.dir/cmake_device_link.o"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OverLap.dir/dlink.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -134,20 +166,24 @@ CMakeFiles/OverLap.dir/build: CMakeFiles/OverLap.dir/cmake_device_link.o
 
 # Object files for target OverLap
 OverLap_OBJECTS = \
+"CMakeFiles/OverLap.dir/src/test.cu.o" \
+"CMakeFiles/OverLap.dir/src/rmsnorm.cu.o" \
 "CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o" \
 "CMakeFiles/OverLap.dir/src/gemm.cu.o" \
-"CMakeFiles/OverLap.dir/src/nvcc.cu.o"
+"CMakeFiles/OverLap.dir/src/pdl.cu.o"
 
 # External object files for target OverLap
 OverLap_EXTERNAL_OBJECTS =
 
+OverLap: CMakeFiles/OverLap.dir/src/test.cu.o
+OverLap: CMakeFiles/OverLap.dir/src/rmsnorm.cu.o
 OverLap: CMakeFiles/OverLap.dir/src/distributed_gemm.cu.o
 OverLap: CMakeFiles/OverLap.dir/src/gemm.cu.o
-OverLap: CMakeFiles/OverLap.dir/src/nvcc.cu.o
+OverLap: CMakeFiles/OverLap.dir/src/pdl.cu.o
 OverLap: CMakeFiles/OverLap.dir/build.make
 OverLap: CMakeFiles/OverLap.dir/cmake_device_link.o
 OverLap: CMakeFiles/OverLap.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/workspace/overlap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CUDA executable OverLap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/workspace/overlap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CUDA executable OverLap"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OverLap.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

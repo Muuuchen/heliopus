@@ -20,8 +20,8 @@
 //   PCIe Host Bridge) PIX  = Connection traversing at most a single PCIe bridge NV#  = Connection
 //   traversing a bonded set of # NVLinks
 
-#include <cuda.h>
-#include <cuda_runtime.h>
-// #include <nvshmemx.h>
+// #include <cuda.h>
+// #include <cuda_runtime.h>
+// // #include <nvshmemx.h>
 
-#include <nccl.h>
+// #include <nccl.h>

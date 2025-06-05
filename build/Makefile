@@ -222,29 +222,77 @@ src/gemm.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/gemm.cu.s
 .PHONY : src/gemm.cu.s
 
-src/nvcc.o: src/nvcc.cu.o
-.PHONY : src/nvcc.o
+src/pdl.o: src/pdl.cu.o
+.PHONY : src/pdl.o
 
 # target to build an object file
-src/nvcc.cu.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/nvcc.cu.o
-.PHONY : src/nvcc.cu.o
+src/pdl.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/pdl.cu.o
+.PHONY : src/pdl.cu.o
 
-src/nvcc.i: src/nvcc.cu.i
-.PHONY : src/nvcc.i
+src/pdl.i: src/pdl.cu.i
+.PHONY : src/pdl.i
 
 # target to preprocess a source file
-src/nvcc.cu.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/nvcc.cu.i
-.PHONY : src/nvcc.cu.i
+src/pdl.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/pdl.cu.i
+.PHONY : src/pdl.cu.i
 
-src/nvcc.s: src/nvcc.cu.s
-.PHONY : src/nvcc.s
+src/pdl.s: src/pdl.cu.s
+.PHONY : src/pdl.s
 
 # target to generate assembly for a file
-src/nvcc.cu.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/nvcc.cu.s
-.PHONY : src/nvcc.cu.s
+src/pdl.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/pdl.cu.s
+.PHONY : src/pdl.cu.s
+
+src/rmsnorm.o: src/rmsnorm.cu.o
+.PHONY : src/rmsnorm.o
+
+# target to build an object file
+src/rmsnorm.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/rmsnorm.cu.o
+.PHONY : src/rmsnorm.cu.o
+
+src/rmsnorm.i: src/rmsnorm.cu.i
+.PHONY : src/rmsnorm.i
+
+# target to preprocess a source file
+src/rmsnorm.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/rmsnorm.cu.i
+.PHONY : src/rmsnorm.cu.i
+
+src/rmsnorm.s: src/rmsnorm.cu.s
+.PHONY : src/rmsnorm.s
+
+# target to generate assembly for a file
+src/rmsnorm.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/rmsnorm.cu.s
+.PHONY : src/rmsnorm.cu.s
+
+src/test.o: src/test.cu.o
+.PHONY : src/test.o
+
+# target to build an object file
+src/test.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/test.cu.o
+.PHONY : src/test.cu.o
+
+src/test.i: src/test.cu.i
+.PHONY : src/test.i
+
+# target to preprocess a source file
+src/test.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/test.cu.i
+.PHONY : src/test.cu.i
+
+src/test.s: src/test.cu.s
+.PHONY : src/test.s
+
+# target to generate assembly for a file
+src/test.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OverLap.dir/build.make CMakeFiles/OverLap.dir/src/test.cu.s
+.PHONY : src/test.cu.s
 
 # Help Target
 help:
@@ -265,9 +313,15 @@ help:
 	@echo "... src/gemm.o"
 	@echo "... src/gemm.i"
 	@echo "... src/gemm.s"
-	@echo "... src/nvcc.o"
-	@echo "... src/nvcc.i"
-	@echo "... src/nvcc.s"
+	@echo "... src/pdl.o"
+	@echo "... src/pdl.i"
+	@echo "... src/pdl.s"
+	@echo "... src/rmsnorm.o"
+	@echo "... src/rmsnorm.i"
+	@echo "... src/rmsnorm.s"
+	@echo "... src/test.o"
+	@echo "... src/test.i"
+	@echo "... src/test.s"
 .PHONY : help
 
 

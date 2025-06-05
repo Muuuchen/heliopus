@@ -101,7 +101,7 @@ CMAKE_INSTALL_PREFIX:PATH=/usr/local
 CMAKE_LINKER:FILEPATH=/usr/bin/ld
 
 //Program used to build from build.ninja files.
-CMAKE_MAKE_PROGRAM:FILEPATH=/usr/local/bin/ninja
+CMAKE_MAKE_PROGRAM:FILEPATH=/root/miniconda/bin/ninja
 
 //Flags used by the linker during the creation of modules during
 // all build types.

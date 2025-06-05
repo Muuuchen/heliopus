@@ -4,7 +4,7 @@
 # compile CUDA with /usr/local/cuda/bin/nvcc
 CUDA_DEFINES = 
 
-CUDA_INCLUDES = -I/root/workspace/overlap/thirdparty/cutlass/include -I/root/workspace/overlap/thirdparty/cutlass/tools/util/include
+CUDA_INCLUDES = -I/root/workspace/overlap/include
 
-CUDA_FLAGS =  --generate-code=arch=compute_52,code=[compute_52,sm_52] --expt-relaxed-constexpr -std=c++17
+CUDA_FLAGS =  --generate-code=arch=compute_90,code=[compute_90,sm_90] --expt-relaxed-constexpr -std=c++17
 

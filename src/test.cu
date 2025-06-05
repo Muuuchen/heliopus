@@ -1,5 +1,6 @@
 #include "launch_utils.cuh"
 #include "rmsnorm.cuh"
+#include "vecadd.cuh"
 #include <cstddef>
 #include <cuda.h>
 #include <cuda_fp16.h>
@@ -34,7 +35,12 @@ int main()
     float input[m * n];
     float output[m * n];
     float weight[m * n];
-
+    for (int i = 0; i < n * m; i++)
+    {
+        input[i] = 0.8f;
+        output[i] = 0.0f;
+        weight[i] = 1.1f;
+    }
     float* d_input;
     float* d_output;
     float* d_weight;
@@ -45,32 +51,47 @@ int main()
     CHECK_CUDA_ERROR(cudaMemcpy(d_output, output, m * n * sizeof(float), cudaMemcpyHostToDevice));
     CHECK_CUDA_ERROR(cudaMemcpy(d_weight, weight, m * n * sizeof(float), cudaMemcpyHostToDevice));
 
-    //(512 + 31) / 32 + 31) / 32 * 32) =
-    if (n % 8 == 0)
+    dim3 grid(m * n / 256);
+    dim3 block(256);
+    std::cout << "compute:/n";
+    LAUNCH_KERNEL_WITH_PDL(cuda_op::vecadd, grid, block, shmem_size, stream, m * n, d_input,
+                           d_weight, d_output);
+    CHECK_CUDA_ERROR(cudaGetLastError()); // 检查内核启动错误
+
+    LAUNCH_KERNEL_WITH_PDL(cuda_op::vecadd, grid, block, shmem_size, stream, m * n, d_input,
+                           d_weight, d_output);
+    CHECK_CUDA_ERROR(cudaGetLastError()); // 检查内核启动错误
+
+    LAUNCH_KERNEL_WITH_PDL(cuda_op::vecadd, grid, block, shmem_size, stream, m * n, d_input,
+                           d_weight, d_output);
+    CHECK_CUDA_ERROR(cudaGetLastError()); // 检查内核启动错误
+                                          //
+    cudaDeviceSynchronize();
+    // if (n % 8 == 0)
+    // {
+    //     dim3 grid(m);
+    //     dim3 block(std::min<int>(1024, (n / 8 + 31) / 32 * 32));
+    //     std::cout << "compute:/n";
+    //     LAUNCH_KERNEL_WITH_PDL(cuda_op::rmsnorm_twoPassAlgo_e8, grid, block, shmem_size, stream,
+    //                            static_cast<float4*>(static_cast<void*>(&d_output)),
+    //                            static_cast<float4*>(static_cast<void*>(&d_input)),
+    //                            static_cast<float4*>(static_cast<void*>(&d_weight)), m, n, 1e-5);
+    //     CHECK_CUDA_ERROR(cudaGetLastError()); // 检查内核启动错误
+    //     LAUNCH_KERNEL_WITH_PDL(cuda_op::rmsnorm_twoPassAlgo_e8, grid, block, shmem_size, stream,
+    //                            static_cast<float4*>(static_cast<void*>(&d_output)),
+    //                            static_cast<float4*>(static_cast<void*>(&d_input)),
+    //                            static_cast<float4*>(static_cast<void*>(&d_weight)), m, n, 1e-5);
+    //     CHECK_CUDA_ERROR(cudaGetLastError()); // 检查内核启动错误
+    //     LAUNCH_KERNEL_WITH_PDL(cuda_op::rmsnorm_twoPassAlgo_e8, grid, block, shmem_size, stream,
+    //                            static_cast<float4*>(static_cast<void*>(&d_output)),
+    //                            static_cast<float4*>(static_cast<void*>(&d_input)),
+    //                            static_cast<float4*>(static_cast<void*>(&d_weight)), m, n, 1e-5);
+    //     CHECK_CUDA_ERROR(cudaGetLastError()); // 检查内核启动错误
+    std::cout << "done\n";
+    cudaMemcpy(output, d_output, m * n * sizeof(float), cudaMemcpyDeviceToHost);
+    for (int i = 0; i < 10; i++)
     {
-        dim3 grid(m);
-        dim3 block(std::min<int>(1024, ((n / 8 + 31) / 32 + 31) / 32 * 32));
-        std::cout << "compute:/n";
-        LAUNCH_KERNEL_WITH_PDL(cuda_op::rmsnorm_twoPassAlgo_e8, grid, block, shmem_size, stream,
-                               static_cast<float4*>(static_cast<void*>(&d_output)),
-                               static_cast<float4*>(static_cast<void*>(&d_input)),
-                               static_cast<float4*>(static_cast<void*>(&d_weight)), m, n, 1e-5);
-        CHECK_CUDA_ERROR(cudaGetLastError()); // 检查内核启动错误
-        LAUNCH_KERNEL_WITH_PDL(cuda_op::rmsnorm_twoPassAlgo_e8, grid, block, shmem_size, stream,
-                               static_cast<float4*>(static_cast<void*>(&d_output)),
-                               static_cast<float4*>(static_cast<void*>(&d_input)),
-                               static_cast<float4*>(static_cast<void*>(&d_weight)), m, n, 1e-5);
-        CHECK_CUDA_ERROR(cudaGetLastError()); // 检查内核启动错误
-        LAUNCH_KERNEL_WITH_PDL(cuda_op::rmsnorm_twoPassAlgo_e8, grid, block, shmem_size, stream,
-                               static_cast<float4*>(static_cast<void*>(&d_output)),
-                               static_cast<float4*>(static_cast<void*>(&d_input)),
-                               static_cast<float4*>(static_cast<void*>(&d_weight)), m, n, 1e-5);
-        CHECK_CUDA_ERROR(cudaGetLastError()); // 检查内核启动错误
-        std::cout << "done\n";
-        cudaMemcpy(output, d_output, m * n * sizeof(float), cudaMemcpyDeviceToHost);
-        for (int i = 0; i < 10; i++)
-        {
-            std::cout << output[i] << " ";
-        }
+        std::cout << output[i] << " ";
     }
+    // }
 }

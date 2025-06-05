@@ -20,19 +20,20 @@ include_directories(
 # 如果你的代码需要CUDA支持
 enable_language(CUDA)
 find_package(CUDA REQUIRED)
-
+set_property(GLOBAL PROPERTY CUDA_SEPARABLE_COMPILATION ON)
 # 添加可执行文件
 # file(GLOB_RECURSE SOURCES "src/*.cpp" "src/*.cu")
 # add_executable(${PROJECT_NAME} ${SOURCES})
 
 add_executable(${PROJECT_NAME}
     src/test.cu
-    src/rmsnorm.cu       # 关键：显式添加内核定义文件
+    src/rmsnorm.cu      
     src/distributed_gemm.cu
     src/gemm.cu
     src/pdl.cu
-    src/reduce.cu
+    src/vecadd.cu
 )
+target_link_libraries(${PROJECT_NAME} PRIVATE cudart cuda)
 
 # 设置CUDA编译选项
 if(CMAKE_CUDA_COMPILER)

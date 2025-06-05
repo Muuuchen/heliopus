@@ -12,6 +12,7 @@
 		[
 			"add_executable",
 			"install",
+			"target_link_libraries",
 			"target_compile_options",
 			"include_directories"
 		],
@@ -33,17 +34,23 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 50,
+				"line" : 51,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 44,
+				"line" : 36,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
+				"file" : 0,
+				"line" : 45,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
 				"file" : 0,
 				"line" : 14,
 				"parent" : 0
@@ -59,7 +66,7 @@
 					"fragment" : "-g --generate-code=arch=compute_90,code=[compute_90,sm_90]"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 4,
 					"fragment" : "--expt-relaxed-constexpr"
 				},
 				{
@@ -69,7 +76,7 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 4,
+					"backtrace" : 5,
 					"path" : "/root/workspace/overlap/include"
 				}
 			],
@@ -119,6 +126,16 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-lcudart",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-lcuda",
+				"role" : "libraries"
 			},
 			{
 				"fragment" : "-lcudadevrt",
@@ -200,7 +217,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/reduce.cu",
+			"path" : "src/vecadd.cu",
 			"sourceGroupIndex" : 0
 		}
 	],
