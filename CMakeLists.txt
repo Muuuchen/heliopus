@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
-project(OverLap LANGUAGES CXX CUDA)
-
+project(pdl LANGUAGES CXX CUDA)
+set(PROJECT_LIB_NAME pdl_core)
 # 启用C++17标准
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -10,42 +10,62 @@ set(CMAKE_CUDA_ARCHITECTURES 90)
 # 生成compile_commands.json供clangd使用
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# 添加cutlass头文件路径
+# 添加头文件路径（Cutlass 和主项目头文件）
 include_directories(
-    # ${CMAKE_SOURCE_DIR}/thirdparty/cutlass/include
-    # ${CMAKE_SOURCE_DIR}/thirdparty/cutlass/tools/util/include
+    ${CMAKE_SOURCE_DIR}/thirdparty/cutlass/include
+    ${CMAKE_SOURCE_DIR}/thirdparty/cutlass/tools/util/include
     ${CMAKE_SOURCE_DIR}/include
 )
 
-# 如果你的代码需要CUDA支持
+# 启用CUDA支持
 enable_language(CUDA)
 find_package(CUDA REQUIRED)
 set_property(GLOBAL PROPERTY CUDA_SEPARABLE_COMPILATION ON)
-# 添加可执行文件
-# file(GLOB_RECURSE SOURCES "src/*.cpp" "src/*.cu")
-# add_executable(${PROJECT_NAME} ${SOURCES})
 
-add_executable(${PROJECT_NAME}
-    src/test.cu
+# ===== 关键修改：将核心功能编译为静态库 =====
+# 收集核心源文件（排除主入口文件 main.cu）
+set(CORE_SOURCES
     src/rmsnorm.cu      
     src/distributed_gemm.cu
     src/gemm.cu
     src/pdl.cu
     src/vecadd.cu
 )
-target_link_libraries(${PROJECT_NAME} PRIVATE cudart cuda)
 
-# 设置CUDA编译选项
+# 生成静态库（名称为 pdl_core，类型为 STATIC）
+add_library(${PROJECT_LIB_NAME} STATIC ${CORE_SOURCES})
+
+# 配置CUDA编译选项（与主项目一致）
+if(CMAKE_CUDA_COMPILER)
+    set_target_properties(${PROJECT_LIB_NAME} PROPERTIES
+        CUDA_SEPARABLE_COMPILATION ON
+        CUDA_RESOLVE_DEVICE_SYMBOLS ON
+    )
+    target_compile_options(${PROJECT_LIB_NAME} PRIVATE
+        $<$<COMPILE_LANGUAGE:CUDA>:--expt-relaxed-constexpr>
+    )
+endif()
+
+# ===== 主可执行文件（仅包含入口函数） =====
+# 主可执行文件的源文件（仅包含 main.cu）
+set(MAIN_EXE_SOURCES src/main.cu)
+
+# 生成主可执行文件并链接静态库
+add_executable(${PROJECT_NAME} ${MAIN_EXE_SOURCES})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_LIB_NAME} cudart cuda)
+
+# 主可执行文件的CUDA编译选项（保持与库一致）
 if(CMAKE_CUDA_COMPILER)
     set_target_properties(${PROJECT_NAME} PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON
         CUDA_RESOLVE_DEVICE_SYMBOLS ON
     )
-    
     target_compile_options(${PROJECT_NAME} PRIVATE
         $<$<COMPILE_LANGUAGE:CUDA>:--expt-relaxed-constexpr>
     )
 endif()
 
-# 安装规则(可选)
+# 加载测试目录
+add_subdirectory(test)
+
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
