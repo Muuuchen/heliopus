@@ -1,6 +1,6 @@
 get_filename_component(TEST_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 file(GLOB TEST_SOURCES *.cu *.cpp *.c *.cxx)
-
+set(CMAKE_CUDA_ARCHITECTURES "90a")
 if(NOT TEST_SOURCES)
     message(WARNING "No sources found in test: ${TEST_NAME}")
     return()
