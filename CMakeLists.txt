@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.18)
 project(pdl LANGUAGES CXX CUDA)
 set(PROJECT_LIB_NAME pdl_core)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
 # 启用C++17标准
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -54,6 +56,9 @@ set(MAIN_EXE_SOURCES src/main.cu)
 add_executable(${PROJECT_NAME} ${MAIN_EXE_SOURCES})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_LIB_NAME} cudart cuda)
 
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+)
 # 主可执行文件的CUDA编译选项（保持与库一致）
 if(CMAKE_CUDA_COMPILER)
     set_target_properties(${PROJECT_NAME} PROPERTIES
